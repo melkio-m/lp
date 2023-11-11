@@ -169,3 +169,16 @@ header{
   margin: 10px 40px 10px 465px;
   cursor: pointer;
 }
+
+.LogoutButton {
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  border: 1px solid black;
+  color: rgb(255, 255, 255);
+  padding: 8px 17px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 40px 10px 465px;
+  cursor: pointer;
+}
