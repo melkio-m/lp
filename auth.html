@@ -22,7 +22,7 @@
  <div class="items">items</div>
  </div>
  <div class="total">
-<div class="total-amount">£</div>
+<div class="total-amount">&pound;</div>
 <div class="total-amount" id="cartValueElement">0.00</div>
  </div>
 </div> 
@@ -32,7 +32,7 @@
 
 <div class="Cart-Items">
  <div class="image-box">
- <img src="img/jewel01.png" style={{ height="80px" }} />
+ <img src="img/Jewel01.png" style={{ height="80px" }} />
  </div>
  <div class="about">
  <h1 class="title">Rose Gold-Plated White AD-Studded Jewellery Set</h1>
@@ -43,13 +43,13 @@
 <button class="btn" onclick="var i = parseInt(itemCount01.innerHTML);if(i>=0){itemCount01.innerHTML = i+1;cartTotal(12.99);}">+</button>
 </div>
  <div class="prices">
- <div class="amount">£12.99</div>
+ <div class="amount">&pound;12.99</div>
  </div>
  </div>
 
 <div class="Cart-Items">
  <div class="image-box">
- <img src="img/jewel02.png" style={{ height="80px" }} />
+ <img src="img/Jewel02.png" style={{ height="80px" }} />
  </div>
  <div class="about">
  <h1 class="title">Silver Plated Stylish Designed Jewellery Set</h1>
@@ -60,13 +60,13 @@
 <button class="btn" onclick="var i = parseInt(itemCount02.innerHTML);if(i>=0){itemCount02.innerHTML = i+1;cartTotal(22.99);}">+</button>
 </div>
  <div class="prices">
- <div class="amount">£22.99</div>
+ <div class="amount">&pound;22.99</div>
  </div>
  </div>
 
 <div class="Cart-Items">
  <div class="image-box">
- <img src="img/jewel03.png" style={{ height="80px" }} />
+ <img src="img/Jewel03.png" style={{ height="80px" }} />
  </div>
  <div class="about">
  <h1 class="title">White Alloy Necklace Set</h1>
@@ -77,13 +77,13 @@
 <button class="btn" onclick="var i = parseInt(itemCount03.innerHTML);if(i>=0){itemCount03.innerHTML = i+1;cartTotal(18.99);}">+</button>
 </div>
  <div class="prices">
- <div class="amount">£18.99</div>
+ <div class="amount">&pound;18.99</div>
  </div>
  </div>
 
 <div class="Cart-Items">
  <div class="image-box">
- <img src="img/jewel04.png" style={{ height="80px" }} />
+ <img src="img/Jewel04.png" style={{ height="80px" }} />
  </div>
  <div class="about">
  <h1 class="title">Gold Plated Peacock AD Stone Necklace Set</h1>
@@ -94,7 +94,7 @@
 <button class="btn" onclick="var i = parseInt(itemCount04.innerHTML);if(i>=0){itemCount04.innerHTML = i+1;cartTotal(24.99);}">+</button>
 </div>
  <div class="prices">
- <div class="amount">£24.99</div>
+ <div class="amount">&pound;24.99</div>
  </div>
  </div>
 
@@ -118,7 +118,7 @@ var id_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNTE2MjM5MDIyIiw
     
 function lpGetAuthenticationToken(callback) {
             console.log("LP asked for id_token or auth code in Code Flow");
-            // Do your magic…
+            // Do your magicâ€¦
             // On Success
             callback(id_token);
             // On Failure
@@ -155,7 +155,7 @@ function pushSDE(cartItemCount, newCartValue) {
       lpTag.sdes.push(
 	{
           "type": "cart",  //MANDATORY
-          "total":"£"+newCartValue,
+          "total":"Â£"+newCartValue,
           "currency":"GBP",
           "numItems":cartItemCount,
           "products":[{
