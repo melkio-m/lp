@@ -5,7 +5,27 @@
 <!-- END LivePerson Monitor. -->
     
     <script>
-    {
+      
+    var notificationHandler = function(data) {
+    // Do something with the notifications
+    };
+
+    var focusHandler = function() {
+    // Do something when the visitor is focused
+    // Assume the visitor is focused to begin with
+    };
+
+    var blurHandler = function() {
+    // Do something when the visitor is blurred
+    // Assume the visitor is focused to begin with
+    };
+
+    lpTag.agentSDK.init({
+    notificationCallback: notificationHandler,
+    visitorFocusedCallback: focusHandler,
+    visitorBlurredCallback: blurHandler
+    });
+      
     var notifyWhenDone = function(err) {
         if (err) {
             // Do something with the error
@@ -18,7 +38,7 @@
     var data = {text: "Some text"};
 
     lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
-  }
+  
     </script>
   </head>
 <body>
