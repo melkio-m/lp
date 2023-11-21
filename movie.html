@@ -7,7 +7,7 @@
 <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
 
     <script>
-{
+
 var name = '';
 var visitorLocation = '';
 var triedCountry = false;
@@ -24,7 +24,7 @@ var notifyWhenDone = function(err) {
     // or when the action terminated with an error.
 };
 
-{
+
 var updateCallback = function(data) {
     // Do something with the returning data
     var path = data.key;
@@ -42,7 +42,7 @@ var updateCallback = function(data) {
     }
 };
 
-{
+
 var onSuccess = function(data) {
     // Do something with the returning data
     visitorLocation = data;
@@ -60,10 +60,11 @@ var onError = function(err) {
         }
     }
 
-lpTag.agentSDK.init({notificationCallback: notificationHandler});
+  };
 
+lpTag.agentSDK.init({notificationCallback: notificationHandler});
 lpTag.agentSDK.get('city', onSuccess, onError);
-};
+      
     </script>
   </head>
 <body>
