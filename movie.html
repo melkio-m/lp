@@ -97,11 +97,9 @@ var onError = function(err) {
         border-collapse: collapse;
         width: 100%;
     }
-    #results-table td, #results-table th {
+    .td-class {
         border: 1px solid black;
         padding: 8px;
-    }
-    #results-table th {
         background-color: #f2f2f2;
     }
     </style>
@@ -113,23 +111,17 @@ var onError = function(err) {
         <button onclick="search()">Search</button>
       </div>
       <table id="results-table">
-        <thead>
-          <tr>
-            <th>Header</th>
-            <th>Value</th>
-          </tr>
-        </thead>
         <tbody id="results-body">
           <tr>
-            <td>Title</td>
+            <td class="td-class">Title</td>
             <td></td>
           </tr>
           <tr>
-            <td>Released</td>
+            <td class="td-class">Released</td>
             <td></td>
           </tr>
           <tr>
-            <td>Director</td>
+            <td class="td-class">Director</td>
             <td></td>
           </tr>
         </tbody>
