@@ -34,7 +34,7 @@ var updateCallback = function(data) {
             {text: 'Hello ' + value + '!'}, notifyWhenDone);
         if (visitorLocation) {
             lpTag.agentSDK.command(lpTag.agentSDK.cmdNames.write,
-                {text: 'I see you are from ' + visitorLocation}, notifyWhenDone);
+                {text: 'I see you are from ' + visitorLocation.visitorLocation}, notifyWhenDone);
         }
     }
 };
@@ -59,13 +59,69 @@ var onError = function(err) {
 
   };
 
-lpTag.agentSDK.init({notificationCallback: notificationHandler});
-lpTag.agentSDK.get('city', onSuccess, onError);
+//lpTag.agentSDK.init({notificationCallback: notificationHandler});
+//lpTag.agentSDK.get('city', onSuccess, onError);
       
     </script>
+
+    <style>
+    /* CSS styles for the search box and table */
+    #search-box {
+        margin-bottom: 10px;
+    }
+    #results-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #results-table td, #results-table th {
+        border: 1px solid black;
+        padding: 8px;
+    }
+    #results-table th {
+        background-color: #f2f2f2;
+    }
+    </style>
+    
   </head>
 <body>
- 
+    <div id="search-box">
+        <input type="text" id="search-input" placeholder="Enter movie name here">
+        <button onclick="search()">Search</button>
+      </div>
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="results-body">
+        </tbody>
+      </table>
+    
+      <script>
+        function search() {
+          var query = document.getElementById("search-input").value;
+          // Perform search logic here and retrieve the results
+          var api_url = "https://www.omdbapi.com/?t="+query+"&apikey=cf60bf6d";
+          const response = await fetch(api_url);
+          var results = await response.json();
+
+          var resultsBody = document.getElementById("results-body");
+          resultsBody.innerHTML = "";
+    
+          Object.keys(results).forEach(function(key) {
+                var value = results[key];
+                var row = resultsBody.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = key;
+                cell2.innerHTML = value;
+
+                console.log('Key: ' + key + ', Value: ' + value);
+            });
+        }
+      </script>    
 </body>
   
 </html>
