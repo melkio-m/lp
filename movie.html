@@ -59,7 +59,20 @@ var onError = function(err) {
 
   };
 
-//lpTag.agentSDK.init({notificationCallback: notificationHandler});
+function pushData() {
+        lpTag.agentSDK.init({notificationCallback: notificationHandler});
+        var resultsBody = document.getElementById("results-body");
+        title = resultsBody.rows[0].cells[1].innerHTML;
+        released = resultsBody.rows[1].cells[1].innerHTML;
+        director = resultsBody.rows[2].cells[1].innerHTML;
+  
+        var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+        var data = {text: "Title : "+title+"\nReleased : "+released+"\nDirector : "+director};
+        console.log(data);
+    
+        lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+}
+
 //lpTag.agentSDK.get('city', onSuccess, onError);
       
         async function search() {
@@ -79,6 +92,7 @@ var onError = function(err) {
           resultsBody.rows[2].cells[1].innerHTML = results.Director;
     
      }
+      
     </script>
 
     <style>
