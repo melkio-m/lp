@@ -107,6 +107,8 @@ var onError = function(err) {
           const response = await fetch(api_url);
           var results = await response.json();
 
+          alert("Key: " + results.key + " Value: " + results.value);
+
           var resultsBody = document.getElementById("results-body");
           resultsBody.innerHTML = "";
     
