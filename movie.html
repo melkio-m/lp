@@ -60,7 +60,6 @@ var onError = function(err) {
   };
 
 function pushData() {
-        lpTag.agentSDK.init({notificationCallback: notificationHandler});
         var resultsBody = document.getElementById("results-body");
         title = resultsBody.rows[0].cells[1].innerHTML;
         released = resultsBody.rows[1].cells[1].innerHTML;
@@ -73,6 +72,7 @@ function pushData() {
         lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 }
 
+lpTag.agentSDK.init({notificationCallback: notificationHandler});
 //lpTag.agentSDK.get('city', onSuccess, onError);
       
         async function search() {
