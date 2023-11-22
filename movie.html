@@ -84,34 +84,37 @@ var onError = function(err) {
     <style>
     /* CSS styles for the search box and table */
     body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     #search-box {
         margin-bottom: 10px;
-        justify-content: space-between;
     }
     #results-table {
         border-collapse: collapse;
-        width: 100%;
+        width: 80%;
     }
-    .td {
+    td {
         border: 1px solid black;
         padding: 8px;
+        width: 40%;
     }
     .td-class {
+    	width: 20%;
         background-color: #f2f2f2;
     }
     </style>
     
   </head>
 <body>
+<br>
     <div id="search-box">
         <input type="text" id="search-input" placeholder="Enter movie name here">
         <button onclick="search()">Search</button>
-      </div>
+      </div><br>
       <table id="results-table">
         <tbody id="results-body">
           <tr>
@@ -128,6 +131,7 @@ var onError = function(err) {
           </tr>
         </tbody>
       </table>
+      <br>
     <button onclick="">Send</button>
 </body>
   
