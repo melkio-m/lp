@@ -62,6 +62,29 @@ var onError = function(err) {
 //lpTag.agentSDK.init({notificationCallback: notificationHandler});
 //lpTag.agentSDK.get('city', onSuccess, onError);
       
+        async function search() {
+          var query = document.getElementById("search-input").value;
+          // Perform search logic here and retrieve the results
+          var api_url = "https://www.omdbapi.com/?t="+query+"&apikey=cf60bf6d";
+          const response = await fetch(api_url);
+          var results = await response.json();
+
+          //alert("Key: " + results.key + " Value: " + results.value);
+
+          var resultsBody = document.getElementById("results-body");
+          resultsBody.innerHTML = "";
+    
+          Object.keys(results).forEach(function(key) {
+                var value = results[key];
+                var row = resultsBody.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = key;
+                cell2.innerHTML = value;
+
+                console.log('Key: ' + key + ', Value: ' + value);
+            });
+        }
     </script>
 
     <style>
@@ -99,31 +122,6 @@ var onError = function(err) {
         </tbody>
       </table>
     
-      <script>
-        function search() {
-          var query = document.getElementById("search-input").value;
-          // Perform search logic here and retrieve the results
-          var api_url = "https://www.omdbapi.com/?t="+query+"&apikey=cf60bf6d";
-          const response = await fetch(api_url);
-          var results = await response.json();
-
-          alert("Key: " + results.key + " Value: " + results.value);
-
-          var resultsBody = document.getElementById("results-body");
-          resultsBody.innerHTML = "";
-    
-          Object.keys(results).forEach(function(key) {
-                var value = results[key];
-                var row = resultsBody.insertRow();
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                cell1.innerHTML = key;
-                cell2.innerHTML = value;
-
-                console.log('Key: ' + key + ', Value: ' + value);
-            });
-        }
-      </script>    
 </body>
   
 </html>
