@@ -72,23 +72,23 @@ var onError = function(err) {
           //alert("Key: " + results.key + " Value: " + results.value);
 
           var resultsBody = document.getElementById("results-body");
-          resultsBody.innerHTML = "";
-    
-          Object.keys(results).forEach(function(key) {
-                var value = results[key];
-                var row = resultsBody.insertRow();
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                cell1.innerHTML = key;
-                cell2.innerHTML = value;
+          //resultsBody.innerHTML = "";
 
-                console.log('Key: ' + key + ', Value: ' + value);
-            });
-        }
+          resultsBody.rows[0].cells[1].innerHTML = results.Title;
+          resultsBody.rows[1].cells[1].innerHTML = results.Released;
+          resultsBody.rows[2].cells[1].innerHTML = results.Director;
+    
+     }
     </script>
 
     <style>
     /* CSS styles for the search box and table */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
     #search-box {
         margin-bottom: 10px;
     }
@@ -114,14 +114,26 @@ var onError = function(err) {
       <table id="results-table">
         <thead>
           <tr>
-            <th>Parameter</th>
+            <th>Header</th>
             <th>Value</th>
           </tr>
         </thead>
         <tbody id="results-body">
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
-    
+    <button onclick="">Send</button>
 </body>
   
 </html>
