@@ -1,0 +1,264 @@
+
+<html>
+
+<head>
+
+
+
+<script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+
+
+
+<script>
+
+
+var notificationHandler = function(data) {
+
+// Do something with the notifications
+
+};
+
+
+
+var notifyWhenDone = function(err) {
+
+if (err) {
+
+// Do something with the error
+
+}
+
+// called when the bind is completed successfully,
+
+// or when the action terminated with an error.
+
+};
+
+
+
+
+
+var updateCallback = function(data) {
+
+// Do something with the returning data
+
+// called each time the value is updated.
+
+// If there's an existing value when bind is called - this callback
+
+// will be called with the existing value
+
+};
+
+
+
+
+
+var onSuccess = function(data) {
+
+// Do something with the returning data
+
+};
+
+
+
+var onError = function(err) {
+
+// Do something with the error
+
+};
+
+
+
+function pushData() {
+
+var resultsBody = document.getElementById("results-body");
+
+title = resultsBody.rows[0].cells[1].innerHTML;
+
+released = resultsBody.rows[1].cells[1].innerHTML;
+
+director = resultsBody.rows[2].cells[1].innerHTML;
+
+
+
+var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+
+var data = {text: "Title : "+title+"\nReleased : "+released+"\nDirector : "+director};
+
+console.log(data);
+
+
+
+lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+
+}
+
+
+
+lpTag.agentSDK.init({notificationCallback: notificationHandler});
+
+
+async function search() {
+
+var query = document.getElementById("search-input").value;
+
+// Perform search logic here and retrieve the results
+
+var api_url = "https://www.omdbapi.com/?t="+query+"&apikey=cf60bf6d";
+
+const response = await fetch(api_url);
+
+var results = await response.json();
+
+
+
+//alert("Key: " + results.key + " Value: " + results.value);
+
+
+
+var resultsBody = document.getElementById("results-body");
+
+//resultsBody.innerHTML = "";
+
+
+
+resultsBody.rows[0].cells[1].innerHTML = results.Title;
+
+resultsBody.rows[1].cells[1].innerHTML = results.Released;
+
+resultsBody.rows[2].cells[1].innerHTML = results.Director;
+
+
+
+}
+
+
+
+</script>
+
+
+
+<style>
+
+/* CSS styles for the search box and table */
+
+body {
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: center;
+
+align-items: center;
+
+height: 60vh;
+
+}
+
+#search-box {
+
+margin-bottom: 10px;
+
+}
+
+#results-table {
+
+border-collapse: collapse;
+
+width: 90%;
+
+}
+
+td {
+
+border: 1px solid black;
+
+padding: 8px;
+
+width: 40%;
+
+}
+
+.td-class {
+
+width: 20%;
+
+background-color: #f2f2f2;
+
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+<br>
+
+<div id="search-box">
+
+<input type="text" id="search-input" placeholder="Enter movie name here">
+
+<button onclick="search()">Search</button>
+
+</div><br>
+
+<table id="results-table">
+
+<tbody id="results-body">
+
+<tr>
+
+<td class="td-class">Title</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td class="td-class">Released</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td class="td-class">Director</td>
+
+<td></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<br>
+
+<button onclick="pushData()">Send</button>
+
+</body>
+
+<script>
+
+const queryString = window.location.search;
+const parameters = new URLSearchParams(queryString);
+let movie = parameters.get('name');
+
+console.log(movie);
+
+if(movie){
+document.getElementById("search-input").value = movie;
+    search();
+}
+
+</script>
+
+</html>
+
